@@ -12,9 +12,12 @@ function splitLists(lists) {
 function getLowestNumbers(){
     const lowestLeft = Math.min(...leftNumbers);
     const lowestRight = Math.min(...rightNumbers);
+
     // find where these numbers are...
-    let lowestLeftIndex = leftNumbers.findIndex((number) => number === lowestLeft);
-    let lowestRightIndex = rightNumbers.findIndex((number) => number === lowestRight);
+    let lowestLeftIndex = leftNumbers.findIndex((number) => number == lowestLeft);
+    let lowestRightIndex = rightNumbers.findIndex((number) => number == lowestRight);
+    // using == so number value being compared... not the memory location
+
     /// ...and remove from arrays
     leftNumbers.splice(lowestLeftIndex, 1);
     rightNumbers.splice(lowestRightIndex, 1);
@@ -23,15 +26,11 @@ function getLowestNumbers(){
 
 function findDifference(pairs) {
     splitLists(pairs);
-    console.log(leftNumbers, "<-- leftNumbers");
-    console.log(rightNumbers, "<-- rightNumbers");
     let lowestNumbers = [];
     for (let i = 0; i < pairs.length; i++) {
         lowestNumbers = getLowestNumbers();
-        console.log(lowestNumbers, "<-- lowestNumbers");
         differences.push(Math.abs(lowestNumbers[0] - lowestNumbers[1]));
     };
-    console.log(differences, "<-- differences");
     return differences.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 }
 
