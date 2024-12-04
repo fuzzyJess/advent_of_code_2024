@@ -1,4 +1,4 @@
-const {findSimilarity} = require('./day_2');
+const {findSimilarity} = require('./day_1pt2');
 const puzzleData = require('./refactored-data');
 
 describe("findSimilarity", () => {
